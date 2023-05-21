@@ -23,6 +23,26 @@ namespace DataGridSample
         public MainWindow()
         {
             InitializeComponent();
+
+            if (DataContext is System.ComponentModel.INotifyPropertyChanged vm)
+            {
+                vm.PropertyChanged += (_, e) =>
+                {
+                    if (e.PropertyName?.Equals("DataTable") != true)
+                    {
+                        return;
+                    }
+                    if (VisualTreeHelper.GetChildrenCount(DataGrid) <= 0)
+                    {
+                        return;
+                    }
+                    if (VisualTreeHelper.GetChild(DataGrid, 0) is Decorator border)
+                    {
+                        var scrollViewer = border.Child as ScrollViewer;
+                        scrollViewer?.ScrollToHorizontalOffset(scrollViewer!.HorizontalOffset);
+                    }
+                };
+            }
         }
     }
 }
