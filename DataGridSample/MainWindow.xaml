@@ -27,6 +27,7 @@
             <Button Command="{Binding SelectDataCommand}" CommandParameter="0">DataTable 1</Button>
             <Button Command="{Binding SelectDataCommand}" CommandParameter="1">DataTable 2</Button>
             <Button Command="{Binding SelectDataCommand}" CommandParameter="2">DataTable 3</Button>
+            <Button Command="{Binding SelectDataCommand}">DataTable Null</Button>
         </StackPanel>
 
         <DataGrid Grid.Row="1" x:Name="DataGrid" ItemsSource="{Binding DataTable}" CanUserAddRows="False"/>
